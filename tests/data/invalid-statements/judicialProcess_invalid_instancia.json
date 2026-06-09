@@ -1,0 +1,20 @@
+[
+  {
+    "statementId": "abcdefghij01234567890123456789mn",
+    "declarationSubject": "jp-invalid-0003",
+    "recordId": "jp-invalid-0003",
+    "recordType": "judicialProcess",
+    "recordDetails": {
+      "numero": "00001234520250000004",
+      "classeProcessual": 7,
+      "nivelSigilo": 0,
+      "orgaoJulgador": {
+        "codigoOrgao": "0001",
+        "nomeOrgao": "1ª Vara Cível",
+        "codigoMunicipioIBGE": 3550308,
+        "instancia": "INVALID"
+      }
+    },
+    "statementDate": "2025-01-15"
+  }
+]
