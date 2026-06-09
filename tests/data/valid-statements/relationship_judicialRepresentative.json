@@ -1,0 +1,22 @@
+[
+  {
+    "statementId": "abcdefghij01234567890123456789gh",
+    "declarationSubject": "jp-test-0001",
+    "recordId": "rel-jp-rep-0001",
+    "recordType": "relationship",
+    "recordDetails": {
+      "isComponent": false,
+      "subject": "jp-test-0001",
+      "interestedParty": "person-lawyer-0001",
+      "interests": [
+        {
+          "type": "judicialRepresentative",
+          "judicialInterestDetails": {
+            "polo": "AT"
+          }
+        }
+      ]
+    },
+    "statementDate": "2025-01-15"
+  }
+]

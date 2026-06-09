@@ -1,0 +1,20 @@
+[
+  {
+    "statementId": "abcdefghij01234567890123456789ab",
+    "declarationSubject": "jp-test-0001",
+    "recordId": "jp-test-0001",
+    "recordType": "judicialProcess",
+    "recordDetails": {
+      "numero": "00001234520250000001",
+      "classeProcessual": 7,
+      "nivelSigilo": 0,
+      "orgaoJulgador": {
+        "codigoOrgao": "0001",
+        "nomeOrgao": "1ª Vara Cível de São Paulo",
+        "codigoMunicipioIBGE": 3550308,
+        "instancia": "ORIG"
+      }
+    },
+    "statementDate": "2025-01-15"
+  }
+]
