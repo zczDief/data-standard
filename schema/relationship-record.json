@@ -104,7 +104,9 @@
             "enjoymentAndUseOfAssets",
             "rightToProfitOrIncomeFromAssets",
             "nominee",
-            "nominator" 
+            "nominator",
+            "judicialParty",
+            "judicialRepresentative"
           ],
           "codelist": "interestType.csv",
           "openCodelist": false
@@ -184,6 +186,36 @@
           "description": "The date from which this interest ceased to exist. The date MUST be given in YYYY-MM-DD format. Where a precise month or date are unknown, the value may be rounded to the first day of the (first) month. This rounding SHOULD be noted in accompanying guidance (such as a publication policy or data use guide).",
           "type": "string",
           "format": "date"
+        },
+        "judicialInterestDetails": {
+          "title": "Judicial interest details",
+          "description": "Additional details for interests of type judicialParty or judicialRepresentative.",
+          "$ref": "#/$defs/JudicialInterestDetails"
+        }
+      }
+    },
+    "JudicialInterestDetails": {
+      "title": "Judicial interest details",
+      "description": "Additional details for interests representing participation in a judicial process (judicialParty or judicialRepresentative).",
+      "type": "object",
+      "properties": {
+        "polo": {
+          "title": "Procedural pole",
+          "description": "The procedural pole (polo processual) of this party in the judicial process, using the judicialPole codelist.",
+          "type": "string",
+          "enum": ["AT", "PA", "TC", "FL"],
+          "codelist": "judicialPole.csv",
+          "openCodelist": true
+        },
+        "interessePublico": {
+          "title": "Public interest",
+          "description": "Whether the party's participation is designated as having a public interest (interesse público).",
+          "type": "boolean"
+        },
+        "assistenciaJudiciaria": {
+          "title": "Legal aid",
+          "description": "Whether the party is receiving legal aid assistance (assistência judiciária gratuita).",
+          "type": "boolean"
         }
       }
     }
