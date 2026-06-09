@@ -7,11 +7,12 @@ Schema reference
 
 This is an A - Z guide to the objects of the Data Standard's schema and its `codelists`_ . Details of each object's properties are provided in a table. For a structured view of how objects fit together in the JSON schema, use the :doc:`Schema browser <schema-browser>`.
 
-The top-level objects are :any:`Statements <schema-statement>`. Each statement contains record details for one of three beneficial ownership elements:
+The top-level objects are :any:`Statements <schema-statement>`. Each statement contains record details for one of four elements:
 
 - :any:`Entity <schema-entity-record>`
 - :any:`Person <schema-person-record>`
 - :any:`Relationship <schema-relationship-record>`
+- :any:`Judicial Process <schema-judicial-process-record>`
 
 BODS data MAY be published as a valid `JSON document <https://tools.ietf.org/html/rfc8259>`_. See :any:`Serialisation <guidance-serialisation>` for other options.
 
@@ -231,6 +232,34 @@ See :ref:`representing-bo` for detailed requirements.
    :allowexternalrefs:
    :allowurnrefs:
 
+.. _schema-judicial-process-record:
+
+Record Details (judicial process)
+----------------------------------
+
+See :ref:`representing-judicial-process` for detailed requirements and modelling guidance.
+
+.. json-value:: ../_build_schema/judicial-process-record.json
+   :pointer: /description
+
+.. jsonschema:: ../_build_schema/judicial-process-record.json
+   :collapse: assuntos,movimentos,vinculacoes,outrosNumeros,outrosParametros
+   :allowexternalrefs:
+   :allowurnrefs:
+
+.. _schema-judicial-interest-details:
+
+JudicialInterestDetails
+------------------------
+
+.. json-value:: ../_build_schema/relationship-record.json
+   :pointer: /$defs/JudicialInterestDetails/description
+
+.. jsonschema:: ../_build_schema/relationship-record.json
+   :pointer: /$defs/JudicialInterestDetails
+   :externallinks: {"polo":{"url":"#judicial-pole","text":"Judicial Pole"}}
+   :allowexternalrefs:
+   :allowurnrefs:
 
 .. _schema-record-id:
 
@@ -384,6 +413,36 @@ Interest Type
    :header-rows: 1
    :class: codelist-table
    :file: ../_build_schema/codelists/interestType.csv
+
+.. _codelist-judicial-instance:
+
+Judicial Instance
++++++++++++++++++
+
+.. csv-table-no-translate::
+   :header-rows: 1
+   :class: codelist-table
+   :file: ../_build_schema/codelists/judicialInstance.csv
+
+.. _codelist-judicial-pole:
+
+Judicial Pole
++++++++++++++
+
+.. csv-table-no-translate::
+   :header-rows: 1
+   :class: codelist-table
+   :file: ../_build_schema/codelists/judicialPole.csv
+
+.. _codelist-judicial-process-binding:
+
+Judicial Process Binding
+++++++++++++++++++++++++
+
+.. csv-table-no-translate::
+   :header-rows: 1
+   :class: codelist-table
+   :file: ../_build_schema/codelists/judicialProcessBinding.csv
 
 
 Name Type

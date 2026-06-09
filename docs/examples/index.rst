@@ -88,6 +88,16 @@ This example demonstrates how a confirmation process and changes in beneficial o
     * - 2022-01-21
       - One of the co-owners is bought out by the other. Fermcat's accountant updates the register to reflect this change.
       
+.. _examples-judicial-process:
+
+Judicial process parties (MNI)
+-------------------------------
+
+This example shows a civil compensation claim (*ação de indenização por dano moral*) filed before a first-instance court in São Paulo. A CPF-identified individual plaintiff is in the active pole, a CNPJ-identified company is in the passive pole, and an OAB-identified lawyer represents the plaintiff. The seven statements — one judicial process, two persons, one entity, and three relationships — demonstrate how beneficial ownership graph data can be extended with judicial party information sourced from the Brazilian MNI/CNJ interoperability standard.
+
+.. literalinclude:: ../../examples/judicial-process-parties.json
+    :language: json
+
 Other examples
 --------------
 
