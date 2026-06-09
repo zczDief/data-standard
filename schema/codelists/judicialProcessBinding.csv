@@ -1,0 +1,5 @@
+code,title,description
+AR,Rescissory action,This process is an ação rescisória seeking to annul the linked process.
+CD,Delegated jurisdiction,The adjudicating body's jurisdiction was delegated from the linked process.
+RR,Repetitive appeal,This process is a repetitive appeal (recurso repetitivo) linked to the referenced leading case.
+RG,General repercussion,This process has been recognised as having general repercussion (repercussão geral) linked to the referenced leading case.

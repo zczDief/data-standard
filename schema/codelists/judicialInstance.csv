@@ -1,0 +1,6 @@
+code,title,description
+ORIG,Original jurisdiction,Court exercising original (first-instance) jurisdiction over the process.
+REV,Appellate review,Court exercising second-instance appellate review.
+ESP,Special review,Court exercising special review jurisdiction (e.g. STJ in Brazil).
+EXT,Extraordinary review,Court exercising extraordinary review jurisdiction (e.g. STF in Brazil).
+ADM,Administrative,Administrative body acting in a judicial or quasi-judicial capacity.
