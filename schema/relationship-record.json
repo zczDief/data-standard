@@ -231,6 +231,11 @@
           "title": "Legal aid",
           "description": "Whether the party is receiving legal aid assistance (assistência judiciária gratuita).",
           "type": "boolean"
+        },
+        "representedParty": {
+          "title": "Represented party",
+          "description": "The `recordId` of the person or entity record for the party that this representative acts for. This SHOULD be set on interests of type 'judicialRepresentative', and is not relevant for interests of type 'judicialParty'.",
+          "type": "string"
         }
       }
     }

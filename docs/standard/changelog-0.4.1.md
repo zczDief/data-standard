@@ -15,6 +15,7 @@
   - `polo` — procedural pole (`AT`, `PA`, `TC`, `FL`) from the `judicialPole` codelist (open)
   - `interessePublico` — public interest flag (boolean)
   - `assistenciaJudiciaria` — legal aid flag (boolean)
+  - `representedParty` — `recordId` of the party a `judicialRepresentative` acts for (string)
 
 - **Three new codelists** in `schema/codelists/`:
 

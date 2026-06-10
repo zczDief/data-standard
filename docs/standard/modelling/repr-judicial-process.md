@@ -30,6 +30,7 @@ When modelling judicial process data:
 - `recordDetails.orgaoJulgador` MUST be present and MUST include `instancia` using the `judicialInstance` codelist.
 - Relationship statements MUST set `interests[].type` to `"judicialParty"` or `"judicialRepresentative"`.
 - `interests[].judicialInterestDetails.polo` SHOULD be set for `judicialParty` interests, using the `judicialPole` codelist.
+- `interests[].judicialInterestDetails.representedParty` SHOULD be set for `judicialRepresentative` interests, referencing the `recordId` of the Person or Entity record for the party that the representative acts for.
 - The relationship `subject` MUST be the `recordId` of the judicial process record, and `declarationSubject` on every statement in the declaration MUST also be that `recordId`.
 - Judicial interests represent procedural participation, not ownership or control. `interests[].beneficialOwnershipOrControl` MUST NOT be `true` on interests of type `judicialParty` or `judicialRepresentative` — the schema rejects such data. Data consumers performing beneficial ownership analysis SHOULD exclude these interest types.
 
@@ -47,7 +48,7 @@ A natural person brings an action against a company. A lawyer represents the pla
 4. A `person` statement for the lawyer — carries a `BR-OAB` identifier.
 5. A `relationship` statement linking the plaintiff to the process — `type: "judicialParty"`, `polo: "AT"` (active pole).
 6. A `relationship` statement linking the defendant to the process — `type: "judicialParty"`, `polo: "PA"` (passive pole).
-7. A `relationship` statement linking the lawyer to the process — `type: "judicialRepresentative"`, `polo: "AT"` (representing the active pole).
+7. A `relationship` statement linking the lawyer to the process — `type: "judicialRepresentative"`, `polo: "AT"` (representing the active pole), `representedParty` set to the plaintiff's `recordId`.
 
 See the [judicial process parties example](../../examples/judicial-process-parties.json) for the full JSON.
 

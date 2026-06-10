@@ -90,6 +90,7 @@ Interests of these two types record procedural roles, not ownership or control: 
 | `polo` | string (enum) | no | The procedural pole (*polo processual*) of this party in the judicial process. See [Judicial Pole](#judicial-pole) codelist. |
 | `interessePublico` | boolean | no | Whether the party's participation is designated as having a public interest (*interesse público*). |
 | `assistenciaJudiciaria` | boolean | no | Whether the party is receiving legal aid assistance (*assistência judiciária gratuita*). |
+| `representedParty` | string | no | The `recordId` of the Person or Entity record for the party that this representative acts for. SHOULD be set on `judicialRepresentative` interests; not relevant for `judicialParty` interests. |
 
 ---
 

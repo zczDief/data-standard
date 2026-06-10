@@ -12,4 +12,4 @@ node_modules
 tx
 tests/__pycache__/
 src/
-.tx/*bak
+.tx/*bak.DS_Store

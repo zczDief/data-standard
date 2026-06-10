@@ -216,7 +216,8 @@ For modelling guidance see [Representing judicial processes](../standard/modelli
         {
           "type": "judicialRepresentative",
           "judicialInterestDetails": {
-            "polo": "AT"
+            "polo": "AT",
+            "representedParty": "person-plaintiff-001"
           }
         }
       ]
@@ -244,4 +245,4 @@ For modelling guidance see [Representing judicial processes](../standard/modelli
 | 4 | `person-lawyer-001` | `person` | Plaintiff's lawyer — identified by BR-OAB |
 | 5 | `rel-plaintiff-jp-001` | `relationship` | Plaintiff → process, `judicialParty`, polo `AT` |
 | 6 | `rel-defendant-jp-001` | `relationship` | Defendant → process, `judicialParty`, polo `PA` |
-| 7 | `rel-lawyer-jp-001` | `relationship` | Lawyer → process, `judicialRepresentative`, polo `AT` |
+| 7 | `rel-lawyer-jp-001` | `relationship` | Lawyer → process, `judicialRepresentative`, polo `AT`, represents `person-plaintiff-001` |

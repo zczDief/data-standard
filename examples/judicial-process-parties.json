@@ -207,7 +207,8 @@
         {
           "type": "judicialRepresentative",
           "judicialInterestDetails": {
-            "polo": "AT"
+            "polo": "AT",
+            "representedParty": "person-plaintiff-001"
           }
         }
       ]

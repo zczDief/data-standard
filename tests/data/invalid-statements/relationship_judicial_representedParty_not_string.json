@@ -1,8 +1,8 @@
 [
   {
-    "statementId": "abcdefghij01234567890123456789gh",
+    "statementId": "abcdefghij01234567890123456789kl",
     "declarationSubject": "jp-test-0001",
-    "recordId": "rel-jp-rep-0001",
+    "recordId": "rel-jp-rep-0002",
     "recordType": "relationship",
     "recordDetails": {
       "isComponent": false,
@@ -13,7 +13,7 @@
           "type": "judicialRepresentative",
           "judicialInterestDetails": {
             "polo": "AT",
-            "representedParty": "person-test-0001"
+            "representedParty": 12345
           }
         }
       ]
