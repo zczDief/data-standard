@@ -28,13 +28,19 @@
 
 - **New example**: [Judicial process parties (MNI)](../examples/judicial-process-parties.md) — seven-statement package showing plaintiff, defendant, and lawyer linked to a first-instance civil process in São Paulo.
 
+## Changed
+
+- **`subject` description** in `schema/relationship-record.json` updated to permit a judicial process as the subject of relationships whose interests are all of type `judicialParty` or `judicialRepresentative`.
+- **`declarationSubject` description** in `schema/statement.json` updated to cover judicial process declarations.
+- **New conditional constraint** on the Interest object: `beneficialOwnershipOrControl` MUST NOT be `true` on interests of type `judicialParty` or `judicialRepresentative`, since these record procedural participation rather than ownership or control. Data consumers performing beneficial ownership analysis SHOULD exclude these interest types.
+
 ## Schema files affected
 
 | File | Change |
 |------|--------|
 | `schema/judicial-process-record.json` | **Created** — `$id: urn:judicialProcess` |
-| `schema/statement.json` | `recordType` enum extended; new `allOf` if/then routing block for `judicialProcess` |
-| `schema/relationship-record.json` | `Interest.type` enum extended; `judicialInterestDetails` property and `JudicialInterestDetails` `$def` added |
+| `schema/statement.json` | `recordType` enum extended; new `allOf` if/then routing block for `judicialProcess`; `declarationSubject` description updated |
+| `schema/relationship-record.json` | `Interest.type` enum extended; `judicialInterestDetails` property and `JudicialInterestDetails` `$def` added; `subject` description updated; conditional `beneficialOwnershipOrControl` constraint added |
 | `schema/codelists/recordType.csv` | `judicialProcess` row added |
 | `schema/codelists/interestType.csv` | `judicialParty` and `judicialRepresentative` rows added |
 | `schema/codelists/judicialInstance.csv` | **Created** |

@@ -23,7 +23,8 @@ components are renamed.
 
 
 # Set `schemas` to a list of the $id values of the schemas you expect to find in the /schema/ directory
-schemas = ["urn:components", "urn:statement", "urn:person", "urn:entity", "urn:relationship", "urn:codelists", "urn:judicialProcess"]
+schemas = ["urn:components", "urn:statement", "urn:person", "urn:entity", "urn:relationship", "urn:codelists",
+           "urn:judicialProcess"]
 
 
 schema_paths = get_schema_paths()

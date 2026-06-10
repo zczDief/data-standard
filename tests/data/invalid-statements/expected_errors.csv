@@ -193,3 +193,4 @@ relationship_component_records_true.json,const,$[0].recordDetails.componentRecor
 judicialProcess_missing_numero.json,required,$[0].recordDetails,numero
 judicialProcess_invalid_nivelSigilo.json,maximum,$[0].recordDetails.nivelSigilo,nivelSigilo
 judicialProcess_invalid_instancia.json,enum,$[0].recordDetails.orgaoJulgador.instancia,instancia
+relationship_judicial_bo_true.json,const,$[0].recordDetails.interests[0].beneficialOwnershipOrControl,beneficialOwnershipOrControl

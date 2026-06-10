@@ -35,6 +35,8 @@ When modelling judicial process data:
 * ``recordDetails.orgaoJulgador`` MUST be present and MUST include ``instancia`` using the ``judicialInstance`` codelist.
 * Relationship statements MUST set ``interests[].type`` to ``"judicialParty"`` or ``"judicialRepresentative"``.
 * ``interests[].judicialInterestDetails.polo`` SHOULD be set for ``judicialParty`` interests, using the ``judicialPole`` codelist.
+* The relationship ``subject`` MUST be the ``recordId`` of the judicial process record, and ``declarationSubject`` on every statement in the declaration MUST also be that ``recordId``.
+* Judicial interests represent procedural participation, not ownership or control. ``interests[].beneficialOwnershipOrControl`` MUST NOT be ``true`` on interests of type ``judicialParty`` or ``judicialRepresentative`` — the schema rejects such data. Data consumers performing beneficial ownership analysis SHOULD exclude these interest types.
 
 Modelling scenarios
 -------------------

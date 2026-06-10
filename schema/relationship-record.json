@@ -21,7 +21,7 @@
     },
     "subject": {
       "title": "Subject",
-      "description": "The `recordId` for the subject of the relationship, or a reason why the subject cannot be specified. The subject MUST be an entity.",
+      "description": "The `recordId` for the subject of the relationship, or a reason why the subject cannot be specified. The subject MUST be an entity, unless every interest in the relationship has the type 'judicialParty' or 'judicialRepresentative', in which case the subject MUST be a judicial process.",
       "oneOf": [
         {
           "type": "string"
@@ -125,7 +125,7 @@
         },
         "beneficialOwnershipOrControl": {
           "title": "Beneficial Ownership or Control",
-          "description": "Whether this interest (alone or with others) means the interested party is a beneficial owner of the subject. If 'true' the interested party MUST be a natural person. The definition of 'beneficial owner' in operation SHOULD be noted in accompanying guidance (such as a publication policy or data use guide).",
+          "description": "Whether this interest (alone or with others) means the interested party is a beneficial owner of the subject. If 'true' the interested party MUST be a natural person. The value MUST NOT be 'true' for interests of type 'judicialParty' or 'judicialRepresentative', which represent procedural participation in a judicial process rather than ownership or control. The definition of 'beneficial owner' in operation SHOULD be noted in accompanying guidance (such as a publication policy or data use guide).",
           "type": "boolean"
         },
         "details": {
@@ -192,11 +192,26 @@
           "description": "Additional details for interests of type judicialParty or judicialRepresentative.",
           "$ref": "#/$defs/JudicialInterestDetails"
         }
+      },
+      "if": {
+        "properties": {
+          "type": {
+            "enum": ["judicialParty", "judicialRepresentative"]
+          }
+        },
+        "required": ["type"]
+      },
+      "then": {
+        "properties": {
+          "beneficialOwnershipOrControl": {
+            "const": false
+          }
+        }
       }
     },
     "JudicialInterestDetails": {
       "title": "Judicial interest details",
-      "description": "Additional details for interests representing participation in a judicial process (judicialParty or judicialRepresentative).",
+      "description": "Additional details for interests representing participation in a judicial process (judicialParty or judicialRepresentative). These interests record procedural roles, not ownership or control: data consumers performing beneficial ownership analysis SHOULD exclude them.",
       "type": "object",
       "properties": {
         "polo": {

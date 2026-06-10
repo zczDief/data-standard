@@ -24,6 +24,12 @@ Added
 * New documentation page: :ref:`representing-judicial-process`
 * New example: :ref:`examples-judicial-process` (``examples/judicial-process-parties.json``)
 
+Changed
+-------
+* ``subject`` description in ``relationship-record.json`` updated to permit a judicial process as the subject of relationships whose interests are all of type ``judicialParty`` or ``judicialRepresentative``.
+* ``declarationSubject`` description in ``statement.json`` updated to cover judicial process declarations.
+* A conditional constraint on the Interest object now rejects ``beneficialOwnershipOrControl: true`` on interests of type ``judicialParty`` or ``judicialRepresentative``, since these record procedural participation rather than ownership or control.
+
 [0.4] - 2024-05-08
 ===============================
 

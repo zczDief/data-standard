@@ -83,6 +83,8 @@ An extensible key/value pair for process data not covered by the standard struct
 
 Additional details for interests representing participation in a judicial process (`judicialParty` or `judicialRepresentative`). This object is carried in `interests[].judicialInterestDetails` on Relationship statements.
 
+Interests of these two types record procedural roles, not ownership or control: `beneficialOwnershipOrControl` MUST NOT be `true` on them (the schema enforces this with a conditional constraint), and data consumers performing beneficial ownership analysis SHOULD exclude them.
+
 | Property | Type | Required | Description |
 |----------|------|----------|-------------|
 | `polo` | string (enum) | no | The procedural pole (*polo processual*) of this party in the judicial process. See [Judicial Pole](#judicial-pole) codelist. |
