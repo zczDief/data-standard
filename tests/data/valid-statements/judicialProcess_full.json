@@ -1,0 +1,51 @@
+[
+  {
+    "statementId": "abcdefghij01234567890123456789cd",
+    "declarationSubject": "jp-test-0002",
+    "recordId": "jp-test-0002",
+    "recordType": "judicialProcess",
+    "recordDetails": {
+      "numero": "00001234520250000002",
+      "classeProcessual": 7,
+      "codigoLocalidade": "SP",
+      "nivelSigilo": 0,
+      "intervencaoMP": false,
+      "dataAjuizamento": "2025-01-10",
+      "orgaoJulgador": {
+        "codigoOrgao": "0001",
+        "nomeOrgao": "1ª Vara Cível de São Paulo",
+        "codigoMunicipioIBGE": 3550308,
+        "instancia": "ORIG"
+      },
+      "valorCausa": 50000.00,
+      "assuntos": [
+        {
+          "codigoNacional": 10480,
+          "descricao": "Contratos Bancários"
+        }
+      ],
+      "movimentos": [
+        {
+          "codigoNacional": 26,
+          "descricaoLocal": "Distribuição por sorteio",
+          "dataHora": "2025-01-10T14:30:00Z",
+          "identificadorMovimento": "MOV-0001"
+        }
+      ],
+      "outrosNumeros": ["2025/0001234"],
+      "vinculacoes": [
+        {
+          "tipo": "RG",
+          "numeroProcessoVinculado": "10001234520200000001"
+        }
+      ],
+      "outrosParametros": [
+        {
+          "nome": "segredoJustica",
+          "valor": "false"
+        }
+      ]
+    },
+    "statementDate": "2025-01-15"
+  }
+]

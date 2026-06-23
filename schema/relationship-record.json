@@ -21,7 +21,7 @@
     },
     "subject": {
       "title": "Subject",
-      "description": "The `recordId` for the subject of the relationship, or a reason why the subject cannot be specified. The subject MUST be an entity.",
+      "description": "The `recordId` for the subject of the relationship, or a reason why the subject cannot be specified. The subject MUST be an entity, unless every interest in the relationship has the type 'judicialParty' or 'judicialRepresentative', in which case the subject MUST be a judicial process.",
       "oneOf": [
         {
           "type": "string"
@@ -104,7 +104,9 @@
             "enjoymentAndUseOfAssets",
             "rightToProfitOrIncomeFromAssets",
             "nominee",
-            "nominator" 
+            "nominator",
+            "judicialParty",
+            "judicialRepresentative"
           ],
           "codelist": "interestType.csv",
           "openCodelist": false
@@ -123,7 +125,7 @@
         },
         "beneficialOwnershipOrControl": {
           "title": "Beneficial Ownership or Control",
-          "description": "Whether this interest (alone or with others) means the interested party is a beneficial owner of the subject. If 'true' the interested party MUST be a natural person. The definition of 'beneficial owner' in operation SHOULD be noted in accompanying guidance (such as a publication policy or data use guide).",
+          "description": "Whether this interest (alone or with others) means the interested party is a beneficial owner of the subject. If 'true' the interested party MUST be a natural person. The value MUST NOT be 'true' for interests of type 'judicialParty' or 'judicialRepresentative', which represent procedural participation in a judicial process rather than ownership or control. The definition of 'beneficial owner' in operation SHOULD be noted in accompanying guidance (such as a publication policy or data use guide).",
           "type": "boolean"
         },
         "details": {
@@ -184,6 +186,56 @@
           "description": "The date from which this interest ceased to exist. The date MUST be given in YYYY-MM-DD format. Where a precise month or date are unknown, the value may be rounded to the first day of the (first) month. This rounding SHOULD be noted in accompanying guidance (such as a publication policy or data use guide).",
           "type": "string",
           "format": "date"
+        },
+        "judicialInterestDetails": {
+          "title": "Judicial interest details",
+          "description": "Additional details for interests of type judicialParty or judicialRepresentative.",
+          "$ref": "#/$defs/JudicialInterestDetails"
+        }
+      },
+      "if": {
+        "properties": {
+          "type": {
+            "enum": ["judicialParty", "judicialRepresentative"]
+          }
+        },
+        "required": ["type"]
+      },
+      "then": {
+        "properties": {
+          "beneficialOwnershipOrControl": {
+            "const": false
+          }
+        }
+      }
+    },
+    "JudicialInterestDetails": {
+      "title": "Judicial interest details",
+      "description": "Additional details for interests representing participation in a judicial process (judicialParty or judicialRepresentative). These interests record procedural roles, not ownership or control: data consumers performing beneficial ownership analysis SHOULD exclude them.",
+      "type": "object",
+      "properties": {
+        "polo": {
+          "title": "Procedural pole",
+          "description": "The procedural pole (polo processual) of this party in the judicial process, using the judicialPole codelist.",
+          "type": "string",
+          "enum": ["AT", "PA", "TC", "FL"],
+          "codelist": "judicialPole.csv",
+          "openCodelist": true
+        },
+        "interessePublico": {
+          "title": "Public interest",
+          "description": "Whether the party's participation is designated as having a public interest (interesse público).",
+          "type": "boolean"
+        },
+        "assistenciaJudiciaria": {
+          "title": "Legal aid",
+          "description": "Whether the party is receiving legal aid assistance (assistência judiciária gratuita).",
+          "type": "boolean"
+        },
+        "representedParty": {
+          "title": "Represented party",
+          "description": "The `recordId` of the person or entity record for the party that this representative acts for. This SHOULD be set on interests of type 'judicialRepresentative', and is not relevant for interests of type 'judicialParty'.",
+          "type": "string"
         }
       }
     }

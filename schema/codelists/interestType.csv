@@ -22,3 +22,5 @@ enjoymentAndUseOfAssets,Enjoyment and use of assets,The use of assets belonging 
 rightToProfitOrIncomeFromAssets,Right to profit or income from assets,"The right to derive profits, income or both from assets belonging to an entity."
 nominee,Nominee,A person who agrees to act on behalf of the nominator in a specified capacity.
 nominator,Nominator,A person who instructs a nominee to act on their behalf in a specified capacity.
+judicialParty,Judicial party,"A party to a judicial process with a designated procedural pole (polo processual). Use judicialInterestDetails.polo to specify the role (AT, PA, TC or FL)."
+judicialRepresentative,Judicial representative,A lawyer or other legal representative (advogado or representante processual) acting for a party in a judicial process.

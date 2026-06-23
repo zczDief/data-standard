@@ -6,6 +6,30 @@ ChangeLog
 
 .. include:: warningbox.rst
 
+[0.4.1] - 2026-06-09
+=====================================
+
+Added
+-----
+
+* ``judicialProcess`` record type — a new ``recordType`` value and corresponding ``urn:judicialProcess`` schema (``schema/judicial-process-record.json``) for representing Brazilian MNI/CNJ judicial processes. The schema captures the CNJ 20-digit process number, procedural class, confidentiality level, adjudicating body (with judicial instance), and optional fields for subject matter, procedural movements, process links, and extensible parameters.
+* ``judicialParty`` and ``judicialRepresentative`` values added to the ``interest.type`` codelist, enabling Relationship statements to express procedural party and legal representative roles in a judicial process.
+* ``judicialInterestDetails`` property added to the Interest object in ``relationship-record.json``, carrying a ``JudicialInterestDetails`` sub-object with ``polo`` (procedural pole), ``interessePublico`` (public interest flag), ``assistenciaJudiciaria`` (legal aid flag), and ``representedParty`` (the ``recordId`` of the party a ``judicialRepresentative`` acts for).
+* Three new codelists:
+
+  * ``judicialInstance.csv`` — judicial instance levels (ORIG, REV, ESP, EXT, ADM)
+  * ``judicialPole.csv`` — procedural poles (AT, PA, TC, FL)
+  * ``judicialProcessBinding.csv`` — process link types (AR, CD, RR, RG)
+
+* New documentation page: :ref:`representing-judicial-process`
+* New example: :ref:`examples-judicial-process` (``examples/judicial-process-parties.json``)
+
+Changed
+-------
+* ``subject`` description in ``relationship-record.json`` updated to permit a judicial process as the subject of relationships whose interests are all of type ``judicialParty`` or ``judicialRepresentative``.
+* ``declarationSubject`` description in ``statement.json`` updated to cover judicial process declarations.
+* A conditional constraint on the Interest object now rejects ``beneficialOwnershipOrControl: true`` on interests of type ``judicialParty`` or ``judicialRepresentative``, since these record procedural participation rather than ownership or control.
+
 [0.4] - 2024-05-08
 ===============================
 

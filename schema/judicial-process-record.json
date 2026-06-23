@@ -1,0 +1,225 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:judicialProcess",
+  "version": "0.1",
+  "title": "Judicial Process Record Details",
+  "description": "Details of a judicial process (processo judicial) conforming to the Brazilian MNI/CNJ standard (Módulo Nacional de Interoperabilidade, Resolução CNJ 46).",
+  "type": "object",
+  "$defs": {
+    "OrgaoJulgador": {
+      "title": "Adjudicating body",
+      "description": "The court or tribunal body adjudicating the process (órgão julgador).",
+      "type": "object",
+      "properties": {
+        "codigoOrgao": {
+          "title": "Body code",
+          "description": "Unique code identifying the adjudicating body within the tribunal system.",
+          "type": "string"
+        },
+        "nomeOrgao": {
+          "title": "Body name",
+          "description": "Full name of the adjudicating body.",
+          "type": "string"
+        },
+        "codigoMunicipioIBGE": {
+          "title": "IBGE municipality code",
+          "description": "Brazilian IBGE numeric code for the municipality of the adjudicating body.",
+          "type": "integer"
+        },
+        "instancia": {
+          "title": "Judicial instance",
+          "description": "The judicial instance of the adjudicating body, using the judicialInstance codelist.",
+          "type": "string",
+          "enum": ["ORIG", "REV", "ESP", "EXT", "ADM"],
+          "codelist": "judicialInstance.csv",
+          "openCodelist": false
+        }
+      },
+      "required": ["codigoOrgao", "nomeOrgao", "codigoMunicipioIBGE", "instancia"]
+    },
+    "AssuntoProcessual": {
+      "title": "Procedural subject",
+      "description": "A subject-matter classification for the process using national TPU codes (Resolução CNJ 46) and/or local tribunal codes.",
+      "type": "object",
+      "properties": {
+        "codigoNacional": {
+          "title": "National subject code",
+          "description": "National TPU subject code as defined by Resolução CNJ 46.",
+          "type": "integer"
+        },
+        "codigoLocal": {
+          "title": "Local subject code",
+          "description": "Tribunal-specific local subject code.",
+          "type": "string"
+        },
+        "descricao": {
+          "title": "Description",
+          "description": "Textual description of the subject matter.",
+          "type": "string"
+        }
+      }
+    },
+    "MovimentoProcessual": {
+      "title": "Procedural movement",
+      "description": "A procedural event or movement recorded in the process docket (andamento processual).",
+      "type": "object",
+      "properties": {
+        "codigoNacional": {
+          "title": "National movement code",
+          "description": "National TPU movement code as defined by Resolução CNJ 46.",
+          "type": "integer"
+        },
+        "descricaoLocal": {
+          "title": "Local description",
+          "description": "Tribunal-specific textual description of the movement.",
+          "type": "string"
+        },
+        "dataHora": {
+          "title": "Date and time",
+          "description": "Date and time at which the movement was recorded.",
+          "type": "string",
+          "format": "date-time"
+        },
+        "identificadorMovimento": {
+          "title": "Movement identifier",
+          "description": "Unique identifier for the movement within the tribunal's system.",
+          "type": "string"
+        },
+        "complemento": {
+          "title": "Complement",
+          "description": "Additional textual information complementing the movement description.",
+          "type": "string"
+        }
+      },
+      "required": ["dataHora"]
+    },
+    "VinculacaoProcessual": {
+      "title": "Process link",
+      "description": "A formal link between this process and a related process, using the judicialProcessBinding codelist.",
+      "type": "object",
+      "properties": {
+        "tipo": {
+          "title": "Link type",
+          "description": "The nature of the relationship between the two processes, using the judicialProcessBinding codelist.",
+          "type": "string",
+          "enum": ["AR", "CD", "RR", "RG"],
+          "codelist": "judicialProcessBinding.csv",
+          "openCodelist": false
+        },
+        "numeroProcessoVinculado": {
+          "title": "Linked process number",
+          "description": "The 20-digit CNJ unique number of the linked process.",
+          "type": "string",
+          "pattern": "\\d{20}"
+        }
+      },
+      "required": ["tipo", "numeroProcessoVinculado"]
+    },
+    "Parametro": {
+      "title": "Additional parameter",
+      "description": "An extensible key/value pair for process data not covered by the standard structure (outroParametro).",
+      "type": "object",
+      "properties": {
+        "nome": {
+          "title": "Parameter name",
+          "description": "The name of the additional parameter.",
+          "type": "string"
+        },
+        "valor": {
+          "title": "Parameter value",
+          "description": "The value of the additional parameter.",
+          "type": "string"
+        }
+      },
+      "required": ["nome", "valor"]
+    }
+  },
+  "properties": {
+    "numero": {
+      "title": "CNJ process number",
+      "description": "Unique CNJ process number per Resolution 65 — exactly 20 consecutive digits without mask (NNNNNNN-DD.AAAA.J.TT.OOOO without separators).",
+      "type": "string",
+      "pattern": "\\d{20}"
+    },
+    "classeProcessual": {
+      "title": "Procedural class",
+      "description": "Procedural class code conforming to CNJ Resolution 46 (Tabelas Processuais Unificadas).",
+      "type": "integer"
+    },
+    "codigoLocalidade": {
+      "title": "Locality code",
+      "description": "Code identifying the locality or comarca where the process is filed.",
+      "type": "string"
+    },
+    "nivelSigilo": {
+      "title": "Confidentiality level",
+      "description": "Process confidentiality level: 0 (público) to 5 (sigilo absoluto). Controls which parties may access the process data.",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 5
+    },
+    "intervencaoMP": {
+      "title": "Public ministry intervention",
+      "description": "Whether the Ministério Público is intervening in the process.",
+      "type": "boolean"
+    },
+    "dataAjuizamento": {
+      "title": "Filing date",
+      "description": "The date on which the process was filed (data de ajuizamento).",
+      "type": "string",
+      "format": "date"
+    },
+    "orgaoJulgador": {
+      "title": "Adjudicating body",
+      "description": "The court or tribunal body responsible for adjudicating the process.",
+      "$ref": "#/$defs/OrgaoJulgador"
+    },
+    "valorCausa": {
+      "title": "Case value",
+      "description": "The monetary value of the cause of action (valor da causa) in the currency of the jurisdiction.",
+      "type": "number",
+      "minimum": 0
+    },
+    "assuntos": {
+      "title": "Procedural subjects",
+      "description": "Subject-matter classifications for the process using national TPU codes and/or local tribunal codes.",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/AssuntoProcessual"
+      }
+    },
+    "movimentos": {
+      "title": "Procedural movements",
+      "description": "Chronological record of procedural events and movements in the process docket.",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/MovimentoProcessual"
+      }
+    },
+    "outrosNumeros": {
+      "title": "Alternative process numbers",
+      "description": "Legacy or alternative numbering schemes for this process.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "vinculacoes": {
+      "title": "Process links",
+      "description": "Formal links to related processes (e.g. rescissory action, delegated jurisdiction, repetitive appeal, general repercussion).",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/VinculacaoProcessual"
+      }
+    },
+    "outrosParametros": {
+      "title": "Additional parameters",
+      "description": "Extensible key/value pairs for process data not covered by the standard structure.",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Parametro"
+      }
+    }
+  },
+  "required": ["numero", "classeProcessual", "nivelSigilo", "orgaoJulgador"]
+}

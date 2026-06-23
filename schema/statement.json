@@ -121,7 +121,7 @@
         },
         "declarationSubject": {
           "title": "Declaration Subject",
-          "description": "A `recordId` value for the subject of a beneficial ownership network (always an entity or person).",
+          "description": "A `recordId` value for the subject of a beneficial ownership network (an entity or person), or for the judicial process at the centre of a judicial process declaration.",
           "type": "string"
         },
         "recordId": {
@@ -136,7 +136,8 @@
           "enum": [
             "entity",
             "person",
-            "relationship"
+            "relationship",
+            "judicialProcess"
           ],
           "codelist": "recordType.csv",
           "openCodelist": false
@@ -204,6 +205,22 @@
             "properties": {
               "recordDetails": {
                 "$ref": "urn:relationship"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "recordType": {
+                "const": "judicialProcess"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "recordDetails": {
+                "$ref": "urn:judicialProcess"
               }
             }
           }
